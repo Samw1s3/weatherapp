@@ -5,20 +5,20 @@ const searchedHistory = document.getElementById('search-history');
 const searchedCities = [];
 
 
-// function renderHistory(){
-//     searchedHistory.innerHTML = "";
+function renderHistory(){
+    searchedHistory.innerHTML = "";
 
-//     for (let index = 0; index < cityName.length; index++) {
-//         const cityName = cityNames[index];
+    for (let index = 0; index < searchedCities.length; index++) {
+        const cityName = searchedCities[index];
+        const button = document.createElement("button");
+        button.innterHTML = cityName;
 
-//         const button = document.createElement("button");
-//         button.textcontent = cityName;
+      searchedHistory.appendchild(button);
+        
+    }
+}
 
-//       ul.appendchild(button);  
-//     }
-// }
 
-// renderHistory();
 //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
 //https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
@@ -71,7 +71,7 @@ searchForm.addEventListener('click', function(event){
     event.preventDefault();
     //User inputs city name
     const userInput = document.getElementById('input-city').value;
-
+    // put searched city into local stoarge
     if (userInput != '') {
         searchedCities.push(userInput);
     }
@@ -114,21 +114,15 @@ searchForm.addEventListener('click', function(event){
             //temp
             //wind
             //humidity
-
-            localStorage.setItem("city", cityName);
-            saveHistory(cityName);
-
-
-
-
-
+            saveHistory(searchedCities);
+            
         })
-
+    renderHistory(searchedCities);
 })
    
 
 
 
-// put searched city into local stoarge
+
 
 //display in a list by city name
