@@ -1,8 +1,24 @@
 
 const weatherApiKey = "8b5fae56d0f774f071b372096e2bef5b";
 
+const searchedHistory = document.getElementById('search-history');
+const searchedCities = [];
 
 
+// function renderHistory(){
+//     searchedHistory.innerHTML = "";
+
+//     for (let index = 0; index < cityName.length; index++) {
+//         const cityName = cityNames[index];
+
+//         const button = document.createElement("button");
+//         button.textcontent = cityName;
+
+//       ul.appendchild(button);  
+//     }
+// }
+
+// renderHistory();
 //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
 //https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
@@ -15,6 +31,7 @@ function getCurrentWeatherApi(city){
                return response.json();
     });
 }
+
 
 // call oncecall API
 function getOneCallApi(lon,lat){
@@ -46,8 +63,8 @@ function iconCodeToPic(iconCode){
 }
 
 function saveHistory(){
-    localStorage.setItem("city", cityName);
-    console.log(cityName);
+    localStorage.setItem("cities", JSON.stringify(searchedCities));
+    console.log(searchedCities);
 }
 searchForm.addEventListener('click', function(event){
 
@@ -55,7 +72,9 @@ searchForm.addEventListener('click', function(event){
     //User inputs city name
     const userInput = document.getElementById('input-city').value;
 
-
+    if (userInput != '') {
+        searchedCities.push(userInput);
+    }
     // call api to retrieve the data by city
     // call current weather api
     getWeather(userInput)
