@@ -29,19 +29,28 @@ ul {
 
 #span-today-uvi {
     padding: 2px 14px 2px 14px;
+    border-radius: 8px;
+
 }
 .green {
     background-color: #64EDA1;
+    border-radius: 8px;
 }
 
 .yellow {
     background-color: yellow;
+    border-radius: 8px;
+
 }
 
 .orange {
     background-color: orange;
+    border-radius: 8px;
+
 }
 
 .red {
     background-color: red;
+    border-radius: 8px;
+
 }

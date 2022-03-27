@@ -12,6 +12,7 @@ function renderHistory(){
         const cityName = searchedCities[index];
         const button = document.createElement("button");
         button.setAttribute("class", "city-button");
+        // button.setAttribute("id",index)
         button.innerHTML = cityName;
 
       searchedHistory.appendChild(button);
@@ -143,9 +144,14 @@ searchForm.addEventListener('submit', function(event){
 
 // User's history save and on click it will bring up old searches
 
+ const cityButton = document.getElementsByClassName('city-button') 
  
 
-
+ cityButton.addEventListener('click', function(event){
+     event.preventDefault();
+     const city = button.innerHTML;
+     console.log(city);
+ })
 
 
 
