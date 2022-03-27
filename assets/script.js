@@ -1,22 +1,27 @@
 
 const weatherApiKey = "8b5fae56d0f774f071b372096e2bef5b";
-
+const clearHistoryButton = document.getElementById('clear-button');
 const searchedHistory = document.getElementById('search-history');
-const searchedCities = [];
+const searchedCities = JSON.parse(localStorage.getItem("cities")) || [];
 
-
+//display in a list by city name
 function renderHistory(){
     searchedHistory.innerHTML = "";
 
     for (let index = 0; index < searchedCities.length; index++) {
         const cityName = searchedCities[index];
         const button = document.createElement("button");
-        button.innterHTML = cityName;
+        button.setAttribute("class", "city-button");
+        button.innerHTML = cityName;
 
-      searchedHistory.appendchild(button);
+      searchedHistory.appendChild(button);
         
     }
 }
+clearHistoryButton.addEventListener('click',function(event){
+    localStorage.clear();
+    window.location.reload();
+})
 
 
 //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
@@ -66,9 +71,10 @@ function saveHistory(){
     localStorage.setItem("cities", JSON.stringify(searchedCities));
     console.log(searchedCities);
 }
-searchForm.addEventListener('click', function(event){
+searchForm.addEventListener('submit', function(event){
 
     event.preventDefault();
+    
     //User inputs city name
     const userInput = document.getElementById('input-city').value;
     // put searched city into local stoarge
@@ -108,6 +114,20 @@ searchForm.addEventListener('click', function(event){
             //uvi
             document.getElementById('span-today-uvi').textContent = uviToday.toFixed(0);
 
+            var uviColor = document.getElementById("span-today-uvi");
+            
+            if (uviToday < 3) {
+                uviColor.classList.add("green");
+            }
+            else if (uviToday >2 & uviToday < 6) {
+                uviColor.classList.add("yellow");
+            }
+            else if (uviToday >5 & uviToday < 8) {
+                uviColor.classList.add("orange");
+            }
+            else { 
+                uviColor.classList.add("red");
+            }
             // 5 day forecast
             // date
             //icon
@@ -118,11 +138,15 @@ searchForm.addEventListener('click', function(event){
             
         })
     renderHistory(searchedCities);
+    
 })
-   
+
+// User's history save and on click it will bring up old searches
+
+ 
 
 
 
 
 
-//display in a list by city name
+

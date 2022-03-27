@@ -13,3 +13,35 @@ input {
 .btn {
     margin: 2px;
 }
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+.city-button {
+    width: 100%;
+    background-color: aquamarine;
+    border-radius: 8px ;
+    display: block;
+    margin: 2px;
+    text-transform: capitalize;
+}
+
+#span-today-uvi {
+    padding: 2px 14px 2px 14px;
+}
+.green {
+    background-color: #64EDA1;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.red {
+    background-color: red;
+}
