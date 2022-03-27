@@ -88,7 +88,7 @@ searchForm.addEventListener('submit', function(event){
     //User inputs city name
     const userInput = document.getElementById('input-city').value;
     // put searched city into local stoarge
-    if (userInput != '') {
+    if (userInput != '' && searchedCities.includes(userInput) === false) {
         searchedCities.push(userInput);
     }
     // call api to retrieve the data by city
