@@ -39,23 +39,23 @@ function getWeather(city){
     });
 }
 
-// getWeather(city)
-//     .then(function (data){
-//        console.log(data); 
-//     })
-
-
 const searchForm = document.getElementById('form-search');
 
 function iconCodeToPic(iconCode){
     return `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
 }
 
-searchForm.addEventListener('submit', function(event){
+function saveHistory(){
+    localStorage.setItem("cities", JSON.stringify(cities));
+    console.log(cities);
+}
+searchForm.addEventListener('click', function(event){
 
     event.preventDefault();
     //User inputs city name
     const userInput = document.getElementById('input-city').value;
+
+
     // call api to retrieve the data by city
     // call current weather api
     getWeather(userInput)
@@ -97,7 +97,7 @@ searchForm.addEventListener('submit', function(event){
             //humidity
 
 
-
+            saveHistory(cityName);
 
 
 
