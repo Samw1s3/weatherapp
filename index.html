@@ -18,17 +18,17 @@
 <body>
    
    <main>
-       <nav >
+       <nav>
            <h1 class="text-center">Weather Dashboard</h1>
        </nav>
 
        <section class="px-4">
            <section class="row">
                <div class="col-3">
-                   <form>
+                   <form id="form-search">
                         <!--search-->
                          <h2>Search for a City:</h2>
-                         <input type="text" placeholder="Perth">
+                         <input id="input-city"type="text" placeholder="Perth" style="text-transform:capitalize">
                          <button type="button" class="btn btn-primary btn-block">Search</button>
                     </form>
 
@@ -44,10 +44,14 @@
                           <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Perth(27 3 2022)</h4>
+                                    <h4 id="today-city" class="card-title"><span id="span-city-name" style="text-transform:capitalize"></span> (<span id="span-date-today"></span>)<img id="today-icon"></h4>
+                                    
                                     <p class="card-text">
                                         <ul>
-                                           <li>Wind Speed 50km/h</li>
+                                           <li>Temperature: <span id="span-today-temp"></span>°C</li>
+                                           <li>Wind: <span id="span-today-wind"></span>m/s</li>
+                                           <li>Humidity: <span id="span-today-humidity"></span>%</li>
+                                           <li>UV Index: <span id="span-today-uvi"></span></li>
                                         </ul>
                                     </p>                       
                                 </div>
@@ -80,7 +84,10 @@
    </main>
    
    
-   
+   <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    ></script>
     <script src="./assets/script.js"></script>
 </body>
 </html>
