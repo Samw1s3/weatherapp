@@ -27,6 +27,9 @@ ul {
     text-transform: capitalize;
 }
 
+.current-weather{
+    border: 2px solid black;
+}
 #span-today-uvi {
     padding: 2px 14px 2px 14px;
     border-radius: 8px;

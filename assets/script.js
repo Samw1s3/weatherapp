@@ -14,11 +14,20 @@ function renderHistory(){
         button.setAttribute("class", "city-button");
         // button.setAttribute("id",index)
         button.innerHTML = cityName;
+         button.addEventListener('click', function(event){
+            event.preventDefault();
+            const city = button.innerHTML;
+            console.log(city);
+            document.getElementById("input-city").value = city;
+            document.getElementById('form-search').submit();
+            })
 
       searchedHistory.appendChild(button);
-        
     }
 }
+// 1. Grab the element #input-city and set it's value to the button's innerHTML (faking like the user entered the city into the input)
+// 2. Then grab the form #form-search and tell it to submit
+// So this would pretend that the user re-entered the city int
 clearHistoryButton.addEventListener('click',function(event){
     localStorage.clear();
     window.location.reload();
@@ -139,19 +148,14 @@ searchForm.addEventListener('submit', function(event){
             
         })
     renderHistory(searchedCities);
-    
+   
 })
 
 // User's history save and on click it will bring up old searches
 
- const cityButton = document.getElementsByClassName('city-button') 
- 
+  
 
- cityButton.addEventListener('click', function(event){
-     event.preventDefault();
-     const city = button.innerHTML;
-     console.log(city);
- })
+ 
 
 
 
