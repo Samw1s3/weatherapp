@@ -46,8 +46,8 @@ function iconCodeToPic(iconCode){
 }
 
 function saveHistory(){
-    localStorage.setItem("cities", JSON.stringify(cities));
-    console.log(cities);
+    localStorage.setItem("city", cityName);
+    console.log(cityName);
 }
 searchForm.addEventListener('click', function(event){
 
@@ -96,7 +96,7 @@ searchForm.addEventListener('click', function(event){
             //wind
             //humidity
 
-
+            localStorage.setItem("city", cityName);
             saveHistory(cityName);
 
 
