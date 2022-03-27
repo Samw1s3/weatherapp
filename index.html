@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link  rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+    crossorigin="anonymous"/>
+    
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <title>Weather Dashboard</title>
+</head>
+<body>
+   
+   <main>
+       <nav >
+           <h1 class="text-center">Weather Dashboard</h1>
+       </nav>
+
+       <section class="px-4">
+           <section class="row">
+               <div class="col-3">
+                   <form>
+                        <!--search-->
+                         <h2>Search for a City:</h2>
+                         <input type="text" placeholder="Perth">
+                         <button type="button" class="btn btn-primary btn-block">Search</button>
+                    </form>
+
+                    <ul>
+                        <li>Perth</li>
+                        <li> Melbourne</li>
+                    </ul>
+               </div>
+               <div class="col-9">
+                       <!--weather data-->
+                       <section class="row">
+                       <!--today's weather-->
+                          <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Perth(27 3 2022)</h4>
+                                    <p class="card-text">
+                                        <ul>
+                                           <li>Wind Speed 50km/h</li>
+                                        </ul>
+                                    </p>                       
+                                </div>
+                          </div>
+                       </section>
+
+                       <section class="row">
+                           <!--Forecast card-->
+                           <artcile class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">27 3 2022</h4>
+                                        <p class="card-text">
+                                            <ul>
+                                               <li>Wind Speed 50km/h</li>
+                                            </ul>
+                                        </p>                       
+                                    </div>
+
+                           </artcile>
+                           <artcile class="col-2"></artcile>
+                           <artcile class="col-2"></artcile>
+                           <artcile class="col-2"></artcile>
+                           <artcile class="col-2"></artcile>
+                       </section>
+               </div>
+           </section>
+
+       </section>
+   </main>
+   
+   
+   
+    <script src="./assets/script.js"></script>
+</body>
+</html>
