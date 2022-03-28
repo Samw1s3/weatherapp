@@ -12,7 +12,7 @@ function renderHistory(){
         const cityName = searchedCities[index];
         const button = document.createElement("button");
         button.setAttribute("class", "city-button");
-        // button.setAttribute("id",index)
+        
         button.innerHTML = cityName;
          button.addEventListener('click', function(event){
             event.preventDefault();
@@ -25,9 +25,7 @@ function renderHistory(){
       searchedHistory.appendChild(button);
     }
 }
-// 1. Grab the element #input-city and set it's value to the button's innerHTML (faking like the user entered the city into the input)
-// 2. Then grab the form #form-search and tell it to submit
-// So this would pretend that the user re-entered the city int
+renderHistory();
 clearHistoryButton.addEventListener('click',function(event){
     localStorage.clear();
     window.location.reload();
@@ -63,9 +61,9 @@ function getOneCallApi(lon,lat){
 function getWeather(city){
     return getCurrentWeatherApi(city)
     .then(function (data) {
-        console.log(data);
-       const lon = data.coord.lon;
-       const lat = data.coord.lat;
+        // console.log(data);
+       globalThis.lon = data.coord.lon;
+       globalThis.lat = data.coord.lat;
 
        return getOneCallApi(lon, lat);
     });
@@ -95,7 +93,7 @@ searchForm.addEventListener('submit', function(event){
     // call current weather api
     getWeather(userInput)
         .then(function(weatherData){
-
+            
             //data: we need
 
             //for today
@@ -137,19 +135,82 @@ searchForm.addEventListener('submit', function(event){
             }
             else { 
                 uviColor.classList.add("red");
-            }
+            }     
+            
             // 5 day forecast
             // date
             //icon
             //temp
             //wind
             //humidity
+            globalThis.forecastURL = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${weatherApiKey}`;
+            getWeatherText(forecastURL);
+        
+        
+        async function getWeatherText(forecastURL) {
+            let weatherObject = await fetch(forecastURL);
+            let weatherText = await weatherObject.text();
+            parseWeather(weatherText);
+        }
+        
+        let parseWeather = function(weatherText) {
+            let weatherJSON = JSON.parse(weatherText);
+            let dailyForecast = weatherJSON.daily;
+            console.log(dailyForecast);
+            for (x = 0; x < 5; ++x) {
+                let day = dailyForecast[x];
+                let today = new Date().getDay() + x;
+                if (today > 6) {
+                    today = today - 7;
+                }
+                console.log("today is",today);
+                let dayOfWeek = getDayOfWeek(today);
+                let description = day.weather[0].description;
+                let icon = day.weather[0].icon;
+                let temp = day.temp.max;
+                let windSpeed = day.wind_speed;
+                let humidity = day.humidity;
+                displayWeatherDay(dayOfWeek, description, icon, temp, windSpeed, humidity)
+            }
+        }
+        
+        let displayWeatherDay = function(dayOfWeek, description, icon, temp, windSpeed, humidity){
+            let out = "<div class=' forecast-card'><img src='http://openweathermap.org/img/wn/" + icon + "@2x.png'>"
+            out += "<h4>" + dayOfWeek + "</h4>";
+            out += "<p>Temp: " + temp + "°C</p>";
+            out += "<p>Wind Speed: " + windSpeed + "m/s</p>";
+            out += "<p>Humidity: " + humidity + "%</p>";
+            document.getElementById("forecast").innerHTML += out;
+            
+        }
+        
+        let getDayOfWeek = function(dayNum) {
+            var weekday = new Array(7);
+            weekday[0] = "Sunday"
+            weekday[1] = "Monday"
+            weekday[2] = "Tuesday"
+            weekday[3] = "Wednesday"
+            weekday[4] = "Thursday"
+            weekday[5] = "Friday"
+            weekday[6] = "Saturday"
+        
+            return weekday[dayNum];
+        
+        }
+                      
+            })
+            
+                
+        
+            
+        
+          
             saveHistory(searchedCities);
             
         })
     renderHistory(searchedCities);
    
-})
+
 
 // User's history save and on click it will bring up old searches
 

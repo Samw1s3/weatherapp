@@ -27,7 +27,7 @@ ul {
     text-transform: capitalize;
 }
 
-.current-weather{
+.daily-weather{
     border: 2px solid black;
 }
 #span-today-uvi {
@@ -56,4 +56,21 @@ ul {
     background-color: red;
     border-radius: 8px;
 
+}
+
+.forecast {
+    font-size: 1rem;
+    display: flex;
+}
+
+.forecast-card {
+    margin: 5px 6px 5px 5px; 
+    border: 2px solid lightblue;
+    width: 19%;
+    padding:5px 5px 5px 20px;
+    border-radius: 8px;
+    box-shadow: inset 2px;
+}
+.col-12 {
+    padding: 0;
 }
