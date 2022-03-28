@@ -48,7 +48,7 @@ function getCurrentWeatherApi(city){
 
 // call oncecall API
 function getOneCallApi(lon,lat){
-    const url = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${weatherApiKey}`
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${weatherApiKey}`
     
     return fetch(url).then(function (res) {
        
@@ -72,7 +72,7 @@ function getWeather(city){
 const searchForm = document.getElementById('form-search');
 
 function iconCodeToPic(iconCode){
-    return `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
+    return `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 }
 
 function saveHistory(){
@@ -143,7 +143,7 @@ searchForm.addEventListener('submit', function(event){
             //temp
             //wind
             //humidity
-            globalThis.forecastURL = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${weatherApiKey}`;
+            globalThis.forecastURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${weatherApiKey}`;
             getWeatherText(forecastURL);
         
         
