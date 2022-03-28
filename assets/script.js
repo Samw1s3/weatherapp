@@ -3,6 +3,7 @@ const weatherApiKey = "8b5fae56d0f774f071b372096e2bef5b";
 const clearHistoryButton = document.getElementById('clear-button');
 const searchedHistory = document.getElementById('search-history');
 const searchedCities = JSON.parse(localStorage.getItem("cities")) || [];
+const searchCity = document.getElementById('city-button');
 
 //display in a list by city name
 function renderHistory(){
@@ -26,6 +27,7 @@ function renderHistory(){
     }
 }
 renderHistory();
+// clear local storage
 clearHistoryButton.addEventListener('click',function(event){
     localStorage.clear();
     window.location.reload();
@@ -89,11 +91,13 @@ searchForm.addEventListener('submit', function(event){
     if (userInput != '' && searchedCities.includes(userInput) === false) {
         searchedCities.push(userInput);
     }
+    renderHistory(searchedCities);
+
     // call api to retrieve the data by city
     // call current weather api
     getWeather(userInput)
         .then(function(weatherData){
-            renderHistory();
+            
             //data: we need
 
             //for today
@@ -208,7 +212,9 @@ searchForm.addEventListener('submit', function(event){
 
 
 // User's history save and on click it will bring up old searches
-
+// function previousSearch(){
+    // addEventListener
+// }
   
 
  
