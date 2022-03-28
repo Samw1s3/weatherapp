@@ -58,7 +58,7 @@ function getOneCallApi(lon,lat){
 
 
 
-function getWeather(city){
+async function getWeather(city){
     return getCurrentWeatherApi(city)
     .then(function (data) {
         // console.log(data);
@@ -93,7 +93,7 @@ searchForm.addEventListener('submit', function(event){
     // call current weather api
     getWeather(userInput)
         .then(function(weatherData){
-            
+            renderHistory();
             //data: we need
 
             //for today
@@ -198,16 +198,11 @@ searchForm.addEventListener('submit', function(event){
         
         }
                       
-            })
-            
-                
-        
-            
-        
-          
+    })
+           
             saveHistory(searchedCities);
             
-        })
+})
     renderHistory(searchedCities);
    
 
