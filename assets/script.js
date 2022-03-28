@@ -175,7 +175,7 @@ searchForm.addEventListener('submit', function(event){
         }
         
         let displayWeatherDay = function(dayOfWeek, description, icon, temp, windSpeed, humidity){
-            let out = "<div class=' forecast-card'><img src='http://openweathermap.org/img/wn/" + icon + "@2x.png'>"
+            let out = "<div class=' forecast-card'><img src='https://openweathermap.org/img/wn/" + icon + "@2x.png'>"
             out += "<h4>" + dayOfWeek + "</h4>";
             out += "<p>Temp: " + temp + "°C</p>";
             out += "<p>Wind Speed: " + windSpeed + "m/s</p>";
