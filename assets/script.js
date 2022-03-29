@@ -12,16 +12,16 @@ function renderHistory(){
     for (let index = 0; index < searchedCities.length; index++) {
         const cityName = searchedCities[index];
         const button = document.createElement("button");
-        button.setAttribute("class", "city-button");
+        button.setAttribute("id", "city-button");
         
         button.innerHTML = cityName;
-         button.addEventListener('click', function(event){
-            event.preventDefault();
-            const city = button.innerHTML;
-            console.log(city);
-            document.getElementById("input-city").value = city;
-            document.getElementById('form-search').submit();
-            })
+        //  button.addEventListener('click', function(event){
+        //     event.preventDefault();
+        //     const city = button.innerHTML;
+        //     console.log(city);
+        //     document.getElementById("input-city").value = city;
+        // //     document.getElementById('form-search').submit();
+        //     })
 
       searchedHistory.appendChild(button);
     }
@@ -215,16 +215,20 @@ searchForm.addEventListener('submit', function(event){
     })
            
             saveHistory(searchedCities);
-            
+    const searchForm = document.getElementById('form-search');
+    searchForm.reset();
 })
 
 
 // User's history save and on click it will bring up old searches
-
+   
     searchCity.addEventListener('click',function(event){
-        event.preventDefault;
-        console.log("button",searchCity);
-        let userInput = searchCity.textContent
+        console.log(searchCity);
+        event.preventDefault();
+        
+        
+        
+        let userInput = searchCity.textContent;
 
         getWeather(userInput)
         .then(function(weatherData){
