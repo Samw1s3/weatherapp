@@ -3,7 +3,7 @@ const weatherApiKey = "8b5fae56d0f774f071b372096e2bef5b";
 const clearHistoryButton = document.getElementById('clear-button');
 const searchedHistory = document.getElementById('search-history');
 const searchedCities = JSON.parse(localStorage.getItem("cities")) || [];
-
+const searchCity = document.getElementsByClassName('city-button');
 
 //display in a list by city name
 function renderHistory(){
@@ -12,6 +12,7 @@ function renderHistory(){
     for (let index = 0; index < searchedCities.length; index++) {
         const cityName = searchedCities[index];
         const button = document.createElement("button");
+        button.setAttribute("class", "city-button");
         button.setAttribute("id", "city-button");
         
         button.innerHTML = cityName;
@@ -35,7 +36,7 @@ clearHistoryButton.addEventListener('click',function(event){
     localStorage.clear();
     window.location.reload();
 })
-const searchCity = document.getElementById('city-button');
+
 
 //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
@@ -222,10 +223,14 @@ searchForm.addEventListener('submit', function(event){
 
 
 // User's history save and on click it will bring up old searches
-   
-    searchCity.addEventListener('click',function(event){
+for (var i=0; i<searchCity.length; i++) {
+    var el = searchCity[i];
+    el.addEventListener('click', function(event) {
+        console.log("hello world")
         console.log(event.target.textContent);
         event.preventDefault();
+
+        //clears previous created elements
         const parent = document.getElementById("forecast")
         while (parent.firstChild) {
          parent.firstChild.remove()
@@ -342,4 +347,8 @@ searchForm.addEventListener('submit', function(event){
         }
 
     })
-    })
+})
+    
+}
+
+        
