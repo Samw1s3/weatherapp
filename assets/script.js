@@ -31,6 +31,7 @@ function renderHistory(){
 renderHistory();
 // clear local storage
 clearHistoryButton.addEventListener('click',function(event){
+    event.preventDefault();
     localStorage.clear();
     window.location.reload();
 })
@@ -225,7 +226,10 @@ searchForm.addEventListener('submit', function(event){
     searchCity.addEventListener('click',function(event){
         console.log(event.target.textContent);
         event.preventDefault();
-        
+        const parent = document.getElementById("forecast")
+        while (parent.firstChild) {
+         parent.firstChild.remove()
+        }
         
         
         let userInput = event.target.textContent;
