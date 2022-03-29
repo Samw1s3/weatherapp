@@ -223,12 +223,12 @@ searchForm.addEventListener('submit', function(event){
 // User's history save and on click it will bring up old searches
    
     searchCity.addEventListener('click',function(event){
-        console.log(searchCity);
+        console.log(event.target.textContent);
         event.preventDefault();
         
         
         
-        let userInput = searchCity.textContent;
+        let userInput = event.target.textContent;
 
         getWeather(userInput)
         .then(function(weatherData){
