@@ -38,7 +38,7 @@ clearHistoryButton.addEventListener('click',function(event){
 
 //https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 
-function getCurrentWeatherApi(city){
+async function getCurrentWeatherApi(city){
     
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}`; 
    
@@ -81,10 +81,18 @@ function saveHistory(){
     localStorage.setItem("cities", JSON.stringify(searchedCities));
     console.log(searchedCities);
 }
+
+//weather function
+
+
+
 searchForm.addEventListener('submit', function(event){
 
     event.preventDefault();
-    
+    const parent = document.getElementById("forecast")
+        while (parent.firstChild) {
+         parent.firstChild.remove()
+        }
     //User inputs city name
     const userInput = document.getElementById('input-city').value;
     // put searched city into local stoarge
@@ -207,14 +215,18 @@ searchForm.addEventListener('submit', function(event){
             saveHistory(searchedCities);
             
 })
-    renderHistory(searchedCities);
-   
 
 
 // User's history save and on click it will bring up old searches
-// function previousSearch(){
-    // addEventListener
-// }
+
+    searchCity.addEventListener('click',function(event){
+        event.preventDefault;
+        let userInput = searchCity.textContent
+
+        getWeather(userInput)
+            .then
+
+    })
   
 
  
