@@ -40,6 +40,10 @@ ul {
     text-transform: capitalize;
 }
 
+#city-button:hover {
+    box-shadow: 0 0 5px #999;
+}
+
 .daily-weather{
     border: 2px solid black;
 }
@@ -83,7 +87,7 @@ ul {
     padding:5px 5px 5px 20px;
     width:18%;
     border-radius: 8px;
-    box-shadow: inset 2px;
+    box-shadow: 5px 10px lightblue;
     }
 .col-12 {
     padding: 0;
